@@ -1,6 +1,8 @@
 import React from "react";
 import { Avatar, Heading, VStack } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
+import myPhoto from "../images/myPhoto.jpeg";
+
 
 const greeting = "Hello, I am Pourya";
 const bio1 = "A Ph.D. Candidate at University of Toronto";
@@ -20,7 +22,7 @@ const LandingSection = () => (
         boxSize={["80px", "100px", "140px"]}
         shadow="md"
       >
-        <Avatar.Image src="public/images/myPhoto.jpeg" />
+        <Avatar.Image src={myPhoto} />
       </Avatar.Root>
 
       <Heading size="md" marginBottom="2rem" color="#001D3D">{greeting}</Heading>
