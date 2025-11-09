@@ -10,6 +10,7 @@ import {
   CloseButton,
   Portal,
 } from "@chakra-ui/react"
+import { useDisclosure } from "@chakra-ui/react";
 
 const socials = [
   { label: "email", icon: faEnvelope, url: "mailto:Pourya.Moghadam@utoronto.ca" },
@@ -19,9 +20,16 @@ const socials = [
 ];
 
 const Header = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleClick = (anchor) => () => {
     const el2 = document.getElementById(`${anchor}-section`);
-    if (el2) el2.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el2) {
+      onClose(); // ✅ Close drawer first
+      setTimeout(() => {
+        el2.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300); // wait for drawer close animation
+    }
   };
   const headerRef = useRef(null);
   const prevScrollYRef = useRef(0);
@@ -93,7 +101,7 @@ const Header = () => {
           </HStack>
 
           {/* Mobile Hamburger */}
-          <Drawer.Root colorPalette='red' placement={{ mdDown: "bottom", md: "end" }} size="xs">
+          <Drawer.Root isOpen={isOpen} onClose={onClose} colorPalette='red' placement={{ mdDown: "bottom", md: "end" }} size="xs">
             <Drawer.Trigger asChild>
               <IconButton borderRadius="50px" size="xs" display={{ base: "flex", md: "none" }}>
                 <LuMenu />

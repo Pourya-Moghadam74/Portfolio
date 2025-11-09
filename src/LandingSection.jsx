@@ -21,7 +21,7 @@ const LandingSection = () => (
         px={{ base: 4, md: 10 }}
         py={{ base: 6, md: 8 }}
         flexDirection={{ base: "column", md: "row" }} // stack vertically on mobile
-        textAlign={{ base: "center", md: "justify" }}    // center text on mobile
+        textAlign={{ base: "justify", md: "justify" }}    // center text on mobile
       >
 
         {/* Right side: about text */}
